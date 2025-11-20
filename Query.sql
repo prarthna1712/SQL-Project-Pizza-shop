@@ -10,9 +10,11 @@ primary key(order_id)
 create table order_details(
 order_details_id int not null,
 order_id int not null,
-pizza_id int not null,
+pizza_id varchar(50),
 quantity int not null,
 primary key (order_details_id)
 );
+
+drop table order_details;
 
 

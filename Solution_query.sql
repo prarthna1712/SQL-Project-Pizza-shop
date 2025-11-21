@@ -17,4 +17,10 @@ order by price desc
 limit 1;
 
 -- 4. Identify the most common pizza size ordered.
-
+select p.size, count(od.order_details_id) as total_order 
+from order_details od
+join pizzas p
+on od.pizza_id = p.pizza_id
+group by p.size
+order by total_order desc 
+limit 1;

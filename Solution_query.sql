@@ -61,4 +61,9 @@ select category, count(name) from pizza_types
 group by category;
 
 -- 9. Group the orders by date and calculate the average number of pizzas ordered per day.
-
+select round(avg(quantity)) from
+(select sum(od.quantity) as quantity, o.order_date
+from orders o
+join order_details od
+on o.order_id = od.order_id
+group by order_date) as order_quantity;

@@ -75,3 +75,13 @@ on od.pizza_id = p.pizza_id
 join pizza_types pt
 on pt.pizza_type_id = p.pizza_type_id
 group by pt.name order by revenue desc limit 3;
+
+-- 11. Calculate the percentage contribution of each pizza type to total revenue.
+select pt.category, sum(p.price * od.quantity) as revenue
+from pizza_types pt
+join pizzas p
+on pt.pizza_type_id = p.pizza_type_id
+join order_details od
+on od.pizza_id = p.pizza_id
+group by pt.category
+order by revenue desc;
